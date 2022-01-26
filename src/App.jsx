@@ -1,44 +1,32 @@
 import { useState } from "react";
 import Button from "./components/Button";
-import Card from "./components/Card"
+import Card from "./components/Card";
+
+import { fetchCatFacts } from "./services/catfacts.service"
 
 
-function App() {
+const App = () => {
 
   const [ catFacts, setCatFacts] = useState([]);
 
+  const getCatFacts = async () => {
+    const apiCatFacts = fetchCatFacts(catFacts);
 
-  const getCatFacts = () => {
-    fetch("https://catfact.ninja/facts")
-      .then((response) => response.json())
-      .then((jsonResponse) => {
-     
-        setCatFacts(jsonResponse.data);
-        // changes STATE and fills the state array in UseState with the cat facts
-        console.log(catFacts)
-        // as state (catFacts) now has info in the array, it will log as "catFacts" rather than "jsonResonse.data"
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    setCatFacts(apiCatFacts);
 
-      getCatList()
 
   }
   
   const getCatList = () => {
       return (
       <ul>
-      {catFacts.map(fact => {
-        return <li>{fact.fact}</li>
-      })}
+        {catFacts.map(fact => {
+          return <li key={fact.fact}>CAT FACT:{fact.fact}</li>
+          })
+        }
       </ul>
-    )}
- 
-   
-  // }
-
- 
+    )
+  }
 
   return (
 
@@ -46,8 +34,14 @@ function App() {
   <>
   < Button clicked={getCatFacts} />
   < Card  getCatList={ getCatList() } />
+  
 
   </>
+
+);
+}
+
+export default App;
 
  
 //   {/* <button onClick={getCatFacts}>Click me for Cat Facts!</button> */}
@@ -66,8 +60,3 @@ function App() {
   
 //   }
 
-
-  );
-}
-
-export default App;

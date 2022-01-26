@@ -1,11 +1,14 @@
 import React from 'react';
+import styles from "./Card.module.scss";
 
 const Card = (props) => {
 
-  const { getCatList } = props;
+  const { getCatList, fact } = props;
 
   return ( 
-  <div> {getCatList}  </div>
+  <div className={styles.catcard}>
+     CAT FACT: {getCatList} 
+  </div>
 
   )
 
