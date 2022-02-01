@@ -2,10 +2,12 @@
   display: flex;
   justify-content: center;
   height: 50px;
-  
 
   button {
-    background-color: mediumpurple;
+    background-color: #ffcbcb;
     font-size: larger;
+    border-radius: 5px;
+    border: solid #ffcbcb 2px;
+    color: grey;
   }
 }

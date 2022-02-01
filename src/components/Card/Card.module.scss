@@ -1,4 +1,12 @@
 .catcard {
-  border: 2px solid black;
-  margin: 50px;
+  background-color: #fffdde;
+  border: 5px solid #ffcbcb;
+  border-radius: 10px;
+  color: grey;
+  display: flex;
+  text-align: center;
+
+  width: 200px;
+  height: fit-content;
+  margin: 10px;
 }
